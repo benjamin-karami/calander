@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { modalOpen } from "../../redux/modalsStatus";
+import AddEvent from "./addEvent/AddEvent";
 import { ModalContainer, ModalHeader, ModalCloseBtn } from "./Modal.styles";
 import NoEvent from "./noEvent/NoEvent";
 import WithEvent from "./withEvent/WithEvent";
@@ -18,6 +19,7 @@ const Modal = () => {
           </ModalCloseBtn>
         </ModalHeader>
         {modalStatus.noEvent ? <NoEvent /> : <WithEvent />}
+        {!modalStatus.noEvent && !modalStatus.WithEvent ? <AddEvent /> : null}
       </ModalContainer>
     </>
   );

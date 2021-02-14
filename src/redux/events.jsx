@@ -1,9 +1,9 @@
-// export function noEventModal(status) {
-//     return {
-//       type: "NO_EVENT_MODAL",
-//       payload: status,
-//     };
-//   }
+export function newEvent(event) {
+  return {
+    type: "NEW_EVENT",
+    payload: event,
+  };
+}
 
 const events = [
   {
@@ -46,8 +46,8 @@ const events = [
 
 export default function eventsReducer(state = events, action) {
   switch (action.type) {
-    case "":
-      return (state = action.payload);
+    case "NEW_EVENT":
+      return [...state, action.payload];
     default:
       return state;
   }
