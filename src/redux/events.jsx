@@ -30,6 +30,18 @@ const events = [
     title: "hello18",
     description: "hello to you18",
   },
+  {
+    id: 5,
+    date: "Sun Feb 18 2021 10:35:08 GMT+0330 (Iran Standard Time)",
+    title: "hello182",
+    description: "hello to you182",
+  },
+  {
+    id: 6,
+    date: "Sun Feb 18 2021 12:40:08 GMT+0330 (Iran Standard Time)",
+    title: "hello183",
+    description: "hello to you183",
+  },
 ];
 
 export default function eventsReducer(state = events, action) {

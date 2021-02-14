@@ -27,7 +27,7 @@ const Calander = () => {
 
   const changeDate = (e) => {
     setDateState(e);
-    dispatch(userSelectedDate(dateState));
+    dispatch(userSelectedDate(e));
     const formatedSelectedDate = moment(e).format("MMMM D YYYY");
     dispatch(modalOpen(true));
     if (dates.includes(formatedSelectedDate)) {
