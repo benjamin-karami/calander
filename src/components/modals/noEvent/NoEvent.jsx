@@ -14,14 +14,13 @@ const NoEvent = () => {
   const modalStatus = useSelector((state) => state.modalStatus);
   const dispatch = useDispatch();
 
-  const handleClose = () => {
-    dispatch(noEventModal(!modalStatus));
-  };
   return (
     <ModalContainer active={modalStatus.noEvent}>
       <ModalHeader>
         <h6>Events</h6>
-        <ModalCloseBtn onClick={handleClose}>X</ModalCloseBtn>
+        <ModalCloseBtn onClick={() => dispatch(noEventModal(!modalStatus))}>
+          X
+        </ModalCloseBtn>
       </ModalHeader>
       <AddEventContainer>
         <AddEventIcon src={addEventIcon} alt="noEventIcon" />
