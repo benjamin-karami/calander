@@ -1,32 +1,17 @@
 import React from "react";
 import {
-  ModalContainer,
-  ModalHeader,
-  ModalCloseBtn,
-  AddEventContainer,
+  NoEventContainer,
   AddEventIcon,
 } from "./NoEvent.styles";
 import addEventIcon from "../../../assets/img/noEventIcon.png";
-import { useSelector, useDispatch } from "react-redux";
-import { noEventModal } from "../../../redux/modalsStatus";
+
 
 const NoEvent = () => {
-  const modalStatus = useSelector((state) => state.modalStatus);
-  const dispatch = useDispatch();
-
   return (
-    <ModalContainer active={modalStatus.noEvent}>
-      <ModalHeader>
-        <h6>Events</h6>
-        <ModalCloseBtn onClick={() => dispatch(noEventModal(!modalStatus))}>
-          X
-        </ModalCloseBtn>
-      </ModalHeader>
-      <AddEventContainer>
+      <NoEventContainer>
         <AddEventIcon src={addEventIcon} alt="noEventIcon" />
         <h2>ADD EVENT</h2>
-      </AddEventContainer>
-    </ModalContainer>
+      </NoEventContainer>
   );
 };
 

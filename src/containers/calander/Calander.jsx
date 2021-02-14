@@ -4,8 +4,11 @@ import "react-calendar/dist/Calendar.css";
 import { RecentEvent, Event } from "./Calander.styles";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
-import { noEventModal, withEventModal } from "../../redux/modalsStatus";
-
+import {
+  modalOpen,
+  noEventModal,
+  withEventModal,
+} from "../../redux/modalsStatus";
 import { userSelectedDate } from "../../redux/userSelectedDate";
 
 const Calander = () => {
@@ -26,11 +29,14 @@ const Calander = () => {
     setDateState(e);
     dispatch(userSelectedDate(dateState));
     const formatedSelectedDate = moment(e).format("MMMM D YYYY");
-    dispatch(
-      !dates.includes(formatedSelectedDate)
-        ? withEventModal(true)
-        : noEventModal(true),
-    );
+    dispatch(modalOpen(true));
+    if (dates.includes(formatedSelectedDate)) {
+      dispatch(withEventModal(true));
+      dispatch(noEventModal(false));
+    } else {
+      dispatch(withEventModal(false));
+      dispatch(noEventModal(true));
+    }
   };
   return (
     <>
