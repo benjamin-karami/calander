@@ -17,7 +17,6 @@ export const NavLink = styled.li`
   padding: 0 15px;
   a {
     color: #333;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     text-decoration: none;
   }

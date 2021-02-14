@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { RecentEvent, Event } from "./Calander.styles";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 
@@ -17,10 +18,13 @@ const Calander = () => {
   return (
     <>
       <Calendar value={dateState} onChange={changeDate} />
-      <p>
+      <RecentEvent>
+        <Event>Recent Event is here</Event>
+      </RecentEvent>
+      {/* <p>
         Current selected date is{" "}
         <b>{moment(dateState).format("MMMM D YYYY")}</b>
-      </p>
+      </p> */}
     </>
   );
 };
