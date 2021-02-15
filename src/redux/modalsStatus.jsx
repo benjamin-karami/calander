@@ -19,6 +19,13 @@ export function withEventModal(status) {
   };
 }
 
+export function addEventModal(status) {
+  return {
+    type: "ADD_EVENT_MODAL",
+    payload: status,
+  };
+}
+
 const modalStatus = {
   modalOpen: false,
   noEvent: false,
@@ -43,6 +50,11 @@ export default function modalStatusReducer(state = modalStatus, action) {
         ...state,
         withEvent: action.payload,
       };
+      case "ADD_EVENT_MODAL":
+        return {
+          ...state,
+          addEvent: action.payload,
+        };
     default:
       return state;
   }

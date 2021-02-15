@@ -8,6 +8,7 @@ import {
   modalOpen,
   noEventModal,
   withEventModal,
+  addEventModal,
 } from "../../redux/modalsStatus";
 import { userSelectedDate } from "../../redux/userSelectedDate";
 
@@ -23,7 +24,7 @@ const Calander = () => {
       dates = [...dates, moment(event.date).format("MMMM D YYYY")];
     });
     setDate(dates);
-  }, []);
+  }, [events]);
 
   const changeDate = (e) => {
     setDateState(e);
@@ -33,11 +34,14 @@ const Calander = () => {
     if (dates.includes(formatedSelectedDate)) {
       dispatch(withEventModal(true));
       dispatch(noEventModal(false));
+      dispatch(addEventModal(false));
     } else {
       dispatch(withEventModal(false));
       dispatch(noEventModal(true));
+      dispatch(addEventModal(false));
     }
   };
+
   return (
     <>
       <Calendar value={dateState} onClickDay={changeDate} />

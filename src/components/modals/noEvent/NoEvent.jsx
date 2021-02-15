@@ -3,7 +3,11 @@ import { NoEventContainer, AddEventIcon } from "./NoEvent.styles";
 import addEventIcon from "../../../assets/img/noEventIcon.png";
 
 import { useDispatch } from "react-redux";
-import { noEventModal, withEventModal } from "../../../redux/modalsStatus";
+import {
+  noEventModal,
+  withEventModal,
+  addEventModal,
+} from "../../../redux/modalsStatus";
 
 const NoEvent = () => {
   const dispatch = useDispatch();
@@ -11,6 +15,7 @@ const NoEvent = () => {
   const handleAdd = () => {
     dispatch(noEventModal(false));
     dispatch(withEventModal(false));
+    dispatch(addEventModal(true));
   };
 
   return (

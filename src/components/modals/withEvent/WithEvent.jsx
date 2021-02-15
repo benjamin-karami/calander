@@ -19,7 +19,7 @@ const WithEvent = () => {
 
   const selectedEvents = events.filter(
     (event) =>
-      moment(event.date).format("MMMM D YYYY") ==
+      moment(event.date).format("MMMM D YYYY") ===
       moment(selectedDate).format("MMMM D YYYY")
   );
 

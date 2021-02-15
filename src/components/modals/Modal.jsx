@@ -18,8 +18,9 @@ const Modal = () => {
             X
           </ModalCloseBtn>
         </ModalHeader>
-        {modalStatus.noEvent ? <NoEvent /> : <WithEvent />}
-        {!modalStatus.noEvent && !modalStatus.WithEvent ? <AddEvent /> : null}
+        {modalStatus.noEvent ? <NoEvent /> : null}
+        {modalStatus.withEvent ? <WithEvent /> : null}
+        {modalStatus.addEvent ? <AddEvent /> : null}
       </ModalContainer>
     </>
   );

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import TimePicker from "react-time-picker";
-import { AddEventContainer } from "./AddEvent.styles";
+import { AddEventContainer, ButtonsContainer, Button } from "./AddEvent.styles";
 import { TextInput, TextArea } from "../../inputs/inputs";
 import { newEvent } from "../../../redux/events";
 import { useSelector, useDispatch } from "react-redux";
+import { modalOpen, addEventModal } from "../../../redux/modalsStatus";
 
 const AddEvent = () => {
   const dispatch = useDispatch();
@@ -20,10 +21,10 @@ const AddEvent = () => {
     setDesc(e.target.value);
   };
 
-  const handleClick = () => {
+  const handleSubmit = () => {
     dispatch(
       newEvent({
-        id: 10,
+        id: new Date().getTime(),
         date: `${selectedDate}`,
         time: eventTime,
         title: eventTitle,
@@ -32,9 +33,19 @@ const AddEvent = () => {
     );
   };
 
+  const handleCancel = () => {
+    dispatch(modalOpen(false));
+    dispatch(addEventModal(false));
+  };
+
   return (
     <AddEventContainer>
-      <TimePicker onChange={onChange} value={eventTime} disableClock={true} />
+      <TimePicker
+        clearIcon={false}
+        onChange={onChange}
+        value={eventTime}
+        disableClock={true}
+      />
       <TextInput
         value={eventTitle}
         label={"Title"}
@@ -45,8 +56,14 @@ const AddEvent = () => {
         label={"Description"}
         onChange={handleTextArea}
       />
-
-      <button onClick={handleClick}>button</button>
+      <ButtonsContainer>
+        <Button primary onClick={handleSubmit}>
+          Submit
+        </Button>
+        <Button onClick={handleCancel} secondary>
+          Cancel
+        </Button>
+      </ButtonsContainer>
     </AddEventContainer>
   );
 };

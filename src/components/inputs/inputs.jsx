@@ -1,24 +1,25 @@
 import React from "react";
+import { InputContainer, Label, TextAreaInput, InputText } from "./inputs.styles";
 
 export const TextInput = (props) => {
   return (
-    <div>
-      <label>{props.label}</label>
-      <input type="text" value={props.value} onChange={props.onChange} />
-    </div>
+    <InputContainer>
+      <Label>{props.label}</Label>
+      <InputText type="text" value={props.value} onChange={props.onChange} />
+    </InputContainer>
   );
 };
 
 export const TextArea = (props) => {
   return (
-    <div>
-      <label>{props.label}</label>
-      <textarea
+    <InputContainer>
+      <Label>{props.label}</Label>
+      <TextAreaInput
         onChange={props.onChange}
         value={props.value}
-        cols="30"
-        rows="10"
-      ></textarea>
-    </div>
+        cols="20"
+        rows="7"
+      ></TextAreaInput>
+    </InputContainer>
   );
 };
