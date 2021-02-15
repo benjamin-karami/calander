@@ -31,6 +31,7 @@ const AddEvent = () => {
         description: eventDesc,
       })
     );
+    handleCancel();
   };
 
   const handleCancel = () => {

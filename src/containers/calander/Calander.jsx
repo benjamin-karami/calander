@@ -17,6 +17,7 @@ const Calander = () => {
   const dispatch = useDispatch();
   const [dateState, setDateState] = useState(new Date());
   const [dates, setDate] = useState([]);
+  const [recentDate, setRecentDate] = useState("");
 
   useEffect(() => {
     let dates = [];
@@ -24,6 +25,23 @@ const Calander = () => {
       dates = [...dates, moment(event.date).format("MMMM D YYYY")];
     });
     setDate(dates);
+
+    const sortEvents = dates.sort((a, b) => {
+      return moment(a).diff(b);
+    });
+
+
+
+    const upComingEvent = events.filter(
+      (event) =>
+        moment(event.date).format("MMMM D YYYY") ===
+        moment(sortEvents.filter((e) => (e) >= moment(new Date()).format("MMMM D YYYY"))[0]).format("MMMM D YYYY")
+    );
+    setRecentDate(upComingEvent[0].title);
+
+    console.log(
+      
+    );
   }, [events]);
 
   const changeDate = (e) => {
@@ -46,7 +64,7 @@ const Calander = () => {
     <>
       <Calendar value={dateState} onClickDay={changeDate} />
       <RecentEvent>
-        <Event>Recent Event is here</Event>
+        <Event>{recentDate}</Event>
       </RecentEvent>
     </>
   );

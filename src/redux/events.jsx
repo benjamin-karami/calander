@@ -7,9 +7,15 @@ export function newEvent(event) {
 
 const events = [
   {
+    id: 7,
+    date: "Sun Feb 28 2021 11:40:08 GMT+0330 (Iran Standard Time)",
+    title: "hello30",
+    description: "hello to you30",
+  },
+  {
     id: 1,
     date: "Sun Feb 14 2021 11:40:08 GMT+0330 (Iran Standard Time)",
-    title: "hello",
+    title: "today is the day",
     description: "hello to you",
   },
   {

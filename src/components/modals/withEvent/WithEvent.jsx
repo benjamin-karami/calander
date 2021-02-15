@@ -1,7 +1,7 @@
 import React from "react";
 import deleteIcon from "../../../assets/img/deleteIcon.png";
 import editIcon from "../../../assets/img/editIcon.png";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   WithEventContainer,
   EventIcons,
@@ -12,16 +12,28 @@ import {
   AddNewEventBtn,
 } from "./WithEvent.styles";
 import moment from "moment";
+import {
+  noEventModal,
+  withEventModal,
+  addEventModal,
+} from "../../../redux/modalsStatus";
 
 const WithEvent = () => {
   const events = useSelector((state) => state.events);
   const selectedDate = useSelector((state) => state.selectedDate);
+  const dispatch = useDispatch();
 
   const selectedEvents = events.filter(
     (event) =>
       moment(event.date).format("MMMM D YYYY") ===
       moment(selectedDate).format("MMMM D YYYY")
   );
+
+  const handleAdd = () => {
+    dispatch(noEventModal(false));
+    dispatch(withEventModal(false));
+    dispatch(addEventModal(true));
+  };
 
   return (
     <WithEventContainer>
@@ -36,7 +48,7 @@ const WithEvent = () => {
           </Event>
         ))}
       </EventsContainer>
-      <AddNewEventBtn>
+      <AddNewEventBtn onClick={handleAdd}>
         <span>+</span>
         <p>Add Event</p>
       </AddNewEventBtn>
