@@ -30,18 +30,18 @@ const Calander = () => {
       return moment(a).diff(b);
     });
 
-
-
     const upComingEvent = events.filter(
       (event) =>
-        moment(event.date).format("MMMM D YYYY") ===
-        moment(sortEvents.filter((e) => (e) >= moment(new Date()).format("MMMM D YYYY"))[0]).format("MMMM D YYYY")
+        moment(event.date).format("MMMM DD YYYY") ===
+        moment(
+          sortEvents.filter(
+            (e) => e >= moment(new Date()).format("MMMM DD YYYY")
+          )[0]
+        ).format("MMMM DD YYYY")
     );
     setRecentDate(upComingEvent[0].title);
 
-    console.log(
-      
-    );
+    console.log(upComingEvent);
   }, [events]);
 
   const changeDate = (e) => {
