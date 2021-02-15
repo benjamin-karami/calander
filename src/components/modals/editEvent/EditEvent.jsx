@@ -14,7 +14,7 @@ import {
   editEventModal,
 } from "../../../redux/modalsStatus";
 
-const AddEvent = ({ editEventInfo }) => {
+const EditEvent = ({ editEventInfo }) => {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.events);
   const [eventTime, onChange] = useState(
@@ -90,4 +90,4 @@ const AddEvent = ({ editEventInfo }) => {
   );
 };
 
-export default AddEvent;
+export default EditEvent;

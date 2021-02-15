@@ -33,12 +33,20 @@ export function editEventModal(status) {
   };
 }
 
+export function eventDetailModal(status) {
+  return {
+    type: "EVENT_DETAIL_MODAL",
+    payload: status,
+  };
+}
+
 const modalStatus = {
   modalOpen: false,
   noEvent: false,
   addEvent: false,
   editEvent: false,
   withEvent: false,
+  eventDetail: false,
 };
 
 export default function modalStatusReducer(state = modalStatus, action) {
@@ -47,6 +55,11 @@ export default function modalStatusReducer(state = modalStatus, action) {
       return {
         ...state,
         modalOpen: action.payload,
+      };
+    case "EVENT_DETAIL_MODAL":
+      return {
+        ...state,
+        eventDetail: action.payload,
       };
     case "NO_EVENT_MODAL":
       return {
@@ -58,16 +71,16 @@ export default function modalStatusReducer(state = modalStatus, action) {
         ...state,
         withEvent: action.payload,
       };
-      case "EDIT_EVENT_MODAL":
-        return  {
-          ...state,
-          editEvent: action.payload,
-        };
-      case "ADD_EVENT_MODAL":
-        return {
-          ...state,
-          addEvent: action.payload,
-        };
+    case "EDIT_EVENT_MODAL":
+      return {
+        ...state,
+        editEvent: action.payload,
+      };
+    case "ADD_EVENT_MODAL":
+      return {
+        ...state,
+        addEvent: action.payload,
+      };
     default:
       return state;
   }

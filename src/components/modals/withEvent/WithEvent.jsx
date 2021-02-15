@@ -16,11 +16,11 @@ import {
   noEventModal,
   withEventModal,
   addEventModal,
-  editEventModal
+  editEventModal,
 } from "../../../redux/modalsStatus";
 import { deleteEvent } from "../../../redux/events";
 
-const WithEvent = ({handleEventEdit}) => {
+const WithEvent = ({ handleEventEdit, handleEventDetail }) => {
   const events = useSelector((state) => state.events);
   const selectedDate = useSelector((state) => state.selectedDate);
   const dispatch = useDispatch();
@@ -48,7 +48,9 @@ const WithEvent = ({handleEventEdit}) => {
       <EventsContainer>
         {selectedEvents.map((event) => (
           <Event key={event.id}>
-            <EventTitle>{event.title}</EventTitle>
+            <EventTitle onClick={(e) => handleEventDetail(event.id)}>
+              {event.title}
+            </EventTitle>
             <EventIcons>
               <EventIcon
                 onClick={(e) => handleDelete(event.id)}
