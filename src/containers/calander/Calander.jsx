@@ -40,8 +40,6 @@ const Calander = () => {
         ).format("MMMM DD YYYY")
     );
     setRecentDate(upComingEvent[0].title);
-
-    console.log(upComingEvent);
   }, [events]);
 
   const changeDate = (e) => {

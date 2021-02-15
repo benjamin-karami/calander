@@ -16,10 +16,11 @@ import {
   noEventModal,
   withEventModal,
   addEventModal,
+  editEventModal
 } from "../../../redux/modalsStatus";
 import { deleteEvent } from "../../../redux/events";
 
-const WithEvent = () => {
+const WithEvent = ({handleEventEdit}) => {
   const events = useSelector((state) => state.events);
   const selectedDate = useSelector((state) => state.selectedDate);
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const WithEvent = () => {
     dispatch(noEventModal(false));
     dispatch(withEventModal(false));
     dispatch(addEventModal(true));
+    dispatch(editEventModal(false));
   };
 
   const handleDelete = (id) => {
@@ -53,7 +55,11 @@ const WithEvent = () => {
                 src={deleteIcon}
                 alt="deleteIcon"
               />
-              <EventIcon src={editIcon} alt="editIcon" />
+              <EventIcon
+                onClick={(e) => handleEventEdit(event.id)}
+                src={editIcon}
+                alt="editIcon"
+              />
             </EventIcons>
           </Event>
         ))}

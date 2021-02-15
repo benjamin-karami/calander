@@ -12,6 +12,13 @@ export function deleteEvent(event) {
   };
 }
 
+export function editEvent(event) {
+  return {
+    type: "EDIT_EVENT",
+    payload: event,
+  };
+}
+
 const events = [
   {
     id: 7,
@@ -62,6 +69,8 @@ export default function eventsReducer(state = events, action) {
     case "NEW_EVENT":
       return [...state, action.payload];
     case "DELETE_EVENT":
+      return (state = action.payload);
+    case "EDIT_EVENT":
       return (state = action.payload);
     default:
       return state;
