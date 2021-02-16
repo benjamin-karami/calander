@@ -5,19 +5,20 @@ export const Main = styled.div`
   width: 100%;
 `;
 
-export const EventTitle = styled.div`
+export const EventTitle = styled.h6`
   font-size: 18px;
   color: #808080;
+  margin: 0 0 10px;
 `;
 
 export const EventsContainer = styled.div`
   margin: 0 0 40px;
   width: 100%;
-  border-bottom: 2px solid #c0c0c0
+  border-bottom: 2px solid #c0c0c0;
 `;
 
 export const EventMonth = styled.h3`
-  margin: 0;
+  margin: 0 0 20px;
 `;
 
 export const Event = styled.div`

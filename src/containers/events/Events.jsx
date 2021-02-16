@@ -41,22 +41,23 @@ const Events = () => {
   );
 
   const items = Object.keys(grouped_items).map(function (k) {
-    const titles = grouped_items[k].map((i) => {
-      return <p key={i.id}>{i.title}</p>;
+    const items = grouped_items[k].map((i) => {
+      return i;
     });
     const obj = {
       name: k,
-      title: titles,
+      title: items,
     };
     return obj;
   });
 
   const handleEventEdit = (id) => {
+    console.log(id);
     setEditEvent(events.filter((e) => e.id === id));
-    dispatch(editEventModal(true));
+    // dispatch(editEventModal(true));
     dispatch(modalOpen(true));
-    dispatch(withEventModal(false));
-    dispatch(eventDetailModal(false));
+    // dispatch(withEventModal(false));
+    // dispatch(eventDetailModal(false));
   };
 
   const handleEventDetail = (id) => {
@@ -79,23 +80,27 @@ const Events = () => {
         return (
           <EventsContainer key={i}>
             <EventMonth>{item.name}</EventMonth>
-            <Event>
-              <EventTitle onClick={(e) => handleEventDetail(item.id)}>
-                {item.title}
-              </EventTitle>
-              <EventIcons>
-                <EventIcon
-                  onClick={(e) => handleDeleteEvent(item.id)}
-                  src={deleteIcon}
-                  alt="deleteIcon"
-                />
-                <EventIcon
-                  onClick={(e) => handleEventEdit(item.id)}
-                  src={editIcon}
-                  alt="editIcon"
-                />
-              </EventIcons>
-            </Event>
+            {item.title.map((e) => {
+              return (
+                <Event key={e.id}>
+                  <EventTitle onClick={(event) => handleEventDetail(e.id)}>
+                    {e.title}
+                  </EventTitle>
+                  <EventIcons>
+                    <EventIcon
+                      onClick={(event) => handleDeleteEvent(e.id)}
+                      src={deleteIcon}
+                      alt="deleteIcon"
+                    />
+                    <EventIcon
+                      onClick={(event) => handleEventEdit(e.id)}
+                      src={editIcon}
+                      alt="editIcon"
+                    />
+                  </EventIcons>
+                </Event>
+              );
+            })}
           </EventsContainer>
         );
       })}
