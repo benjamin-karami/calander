@@ -1,6 +1,6 @@
 import { Main } from "./App.styles.jsx";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Calander } from "./containers";
+import { Calander, Events } from "./containers";
 import { Navbar, Modal } from "./components";
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Calander} />
+          <Route exact path="/events" component={Events} />
         </Switch>
         <Modal/>
       </Main>
