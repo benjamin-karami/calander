@@ -21,20 +21,21 @@ import {
   eventDetailModal,
 } from "../../redux/modalsStatus";
 import { deleteEvent } from "../../redux/events";
+import { editDetailinfo } from "../../redux/editDetailInfo";
 
 const Events = () => {
   const events = useSelector((state) => state.events);
   const dispatch = useDispatch();
-  const [editEventInfo, setEditEvent] = useState();
-  const [eventDetailInfo, setEventDetail] = useState();
 
   const upcomingEvents = events.filter(
     (e) => moment(e.date) >= moment(new Date())
   );
 
   let grouped_items = _.groupBy(upcomingEvents, (b) =>
-    moment(b.date).startOf("month").format("MMMM")
+    moment(b.date).startOf("day").format("MMMM DD")
   );
+
+  console.log(grouped_items);
 
   _.values(grouped_items).forEach((arr) =>
     arr.sort((a, b) => moment(a.date).day() - moment(b.modDate).day())
@@ -51,20 +52,29 @@ const Events = () => {
     return obj;
   });
 
+  const sortedArray = items.sort(
+    (a, b) =>
+      new moment(a.name).format("YYYYMMDD") -
+      new moment(b.name).format("YYYYMMDD")
+  );
+
+  sortedArray[0].name = "Today Events";
+
   const handleEventEdit = (id) => {
     console.log(id);
-    setEditEvent(events.filter((e) => e.id === id));
-    // dispatch(editEventModal(true));
+    dispatch(editDetailinfo(events.filter((e) => e.id === id)));
+    dispatch(editEventModal(true));
     dispatch(modalOpen(true));
-    // dispatch(withEventModal(false));
-    // dispatch(eventDetailModal(false));
+    dispatch(withEventModal(false));
+    dispatch(eventDetailModal(false));
   };
 
   const handleEventDetail = (id) => {
-    setEventDetail(events.filter((e) => e.id === id));
+    dispatch(editDetailinfo(events.filter((e) => e.id === id)));
     dispatch(eventDetailModal(true));
     dispatch(modalOpen(true));
     dispatch(withEventModal(false));
+    dispatch(editEventModal(false));
   };
 
   const handleDeleteEvent = (id) => {
@@ -76,7 +86,7 @@ const Events = () => {
 
   return (
     <Main>
-      {items.map((item, i) => {
+      {sortedArray.map((item, i) => {
         return (
           <EventsContainer key={i}>
             <EventMonth>{item.name}</EventMonth>

@@ -4,7 +4,12 @@ export const DetailEventContainer = styled.div`
   margin-top: 30px;
 `;
 
-export const RemainingDaysContainer = styled.div``;
+export const RemainingDaysContainer = styled.div`
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const EventDetailContainer = styled.div`
   margin-top: 30px;
@@ -37,3 +42,32 @@ export const EventIcon = styled.img`
 `;
 
 export const EventDesc = styled.p``;
+
+export const RemainingTimeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  :nth-child(2) {
+    margin: 0 30px;
+  }
+`;
+export const RemainingTime = styled.p`
+  background-color: #00adef;
+  color: #fff;
+  font-weight: 600;
+  font-size: 28px;
+  border-radius: 4px;
+  width: 43px;
+  height: 53px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const RemainingTimeLabel = styled.p`
+  color: #00adef;
+  font-weight: 600;
+  font-size: 16px;
+`;

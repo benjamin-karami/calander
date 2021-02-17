@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   modalOpen,
@@ -13,24 +13,23 @@ import WithEvent from "./withEvent/WithEvent";
 import EditEvent from "./editEvent/EditEvent";
 import DetailEvent from "./detailModal/DetailEvent";
 import { deleteEvent } from "../../redux/events";
-
+import {editDetailinfo} from "../../redux/editDetailInfo"
 
 const Modal = () => {
   const modalStatus = useSelector((state) => state.modalStatus);
   const events = useSelector((state) => state.events);
-  const [editEventInfo, setEditEvent] = useState();
-  const [eventDetailInfo, setEventDetail] = useState();
+  const editOrDetailInfo = useSelector((state) => state.editOrDetailInfo);
   const dispatch = useDispatch();
 
   const handleEventEdit = (id) => {
-    setEditEvent(events.filter((e) => e.id === id));
+    dispatch(editDetailinfo(events.filter((e) => e.id === id)));
     dispatch(editEventModal(true));
     dispatch(withEventModal(false));
     dispatch(eventDetailModal(false));
   };
 
   const handleEventDetail = (id) => {
-    setEventDetail(events.filter((e) => e.id === id));
+    dispatch(editDetailinfo(events.filter((e) => e.id === id)));
     dispatch(eventDetailModal(true));
     dispatch(withEventModal(false));
   };
@@ -41,14 +40,19 @@ const Modal = () => {
     dispatch(eventDetailModal(false));
     dispatch(withEventModal(true));
   };
+
+  const handleCloseBtn = () => {
+    dispatch(editEventModal(false));
+    dispatch(withEventModal(false));
+    dispatch(modalOpen(false));
+    dispatch(eventDetailModal(false));
+  };
   return (
     <>
       <ModalContainer active={modalStatus.modalOpen}>
         <ModalHeader>
           <h6>Events</h6>
-          <ModalCloseBtn onClick={() => dispatch(modalOpen(!modalStatus))}>
-            X
-          </ModalCloseBtn>
+          <ModalCloseBtn onClick={handleCloseBtn}>X</ModalCloseBtn>
         </ModalHeader>
         {modalStatus.noEvent ? <NoEvent /> : null}
         {modalStatus.withEvent ? (
@@ -61,12 +65,12 @@ const Modal = () => {
         {modalStatus.editEvent ? (
           <EditEvent
             editEventModal={editEventModal}
-            editEventInfo={editEventInfo}
+            editEventInfo={editOrDetailInfo}
           />
         ) : null}
         {modalStatus.eventDetail ? (
           <DetailEvent
-            eventDetailInfo={eventDetailInfo}
+            eventDetailInfo={editOrDetailInfo}
             handleEventEdit={handleEventEdit}
             handleDeleteEvent={handleDeleteEvent}
           />

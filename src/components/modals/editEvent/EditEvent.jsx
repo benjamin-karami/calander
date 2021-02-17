@@ -36,9 +36,7 @@ const EditEvent = ({ editEventInfo }) => {
   };
 
   const handleSubmit = () => {
-    const newEvents = events.filter(
-      (e) => e.id !== editEventInfo[0].id
-    );
+    const newEvents = events.filter((e) => e.id !== editEventInfo[0].id);
     dispatch(
       editEvent([
         ...newEvents,

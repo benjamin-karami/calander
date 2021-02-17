@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const AddEventContainer = styled.div`
-    margin-top: 30px
+    margin-top: 30px;
 `;
 
 export const ButtonsContainer = styled.div`
