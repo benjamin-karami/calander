@@ -21,7 +21,9 @@ export const Event = styled.div`
   border-bottom: 3px solid #dadada;
 `;
 
-export const EventIcons = styled.div``;
+export const EventIcons = styled.div`
+  width: 20%;
+`;
 
 export const EventIcon = styled.img`
   width: 20px;

@@ -15,7 +15,7 @@ export const EventTitle = styled.h6`
 export const EventsContainer = styled.div`
   margin: 0 0 20px;
   width: 100%;
-  h3.Today{
+  h3.Today {
     color: #ff9100;
     font-size: 22px;
   }
@@ -24,7 +24,6 @@ export const EventsContainer = styled.div`
 export const EventMonth = styled.h3`
   margin: 0 0 20px;
   color: #777;
-
 `;
 
 export const Event = styled.div`
@@ -35,7 +34,9 @@ export const Event = styled.div`
   margin-bottom: 10px;
 `;
 
-export const EventIcons = styled.div``;
+export const EventIcons = styled.div`
+  width: 20%;
+`;
 
 export const EventIcon = styled.img`
   width: 15px;

@@ -31,7 +31,9 @@ export const Event = styled.div`
   margin-top: 20px;
 `;
 
-export const EventIcons = styled.div``;
+export const EventIcons = styled.div`
+  width: 20%;
+`;
 
 export const EventIcon = styled.img`
   width: 15px;
