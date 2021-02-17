@@ -39,7 +39,7 @@ const events = [
     date: "Sun Feb 17 2021 11:40:08 GMT+0330 (Iran Standard Time)",
     title: "we can do it",
     description: "hello to you17",
-    time: "12:00",
+    time: "18:00",
   },
   {
     id: 3,

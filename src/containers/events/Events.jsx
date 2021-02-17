@@ -28,14 +28,13 @@ const Events = () => {
   const dispatch = useDispatch();
 
   const upcomingEvents = events.filter(
-    (e) => moment(e.date) >= moment(new Date())
+    (e) =>
+      moment(e.date).format("MMMM DD") >= moment(new Date()).format("MMMM DD")
   );
 
   let grouped_items = _.groupBy(upcomingEvents, (b) =>
     moment(b.date).startOf("day").format("MMMM DD")
   );
-
-  console.log(grouped_items);
 
   _.values(grouped_items).forEach((arr) =>
     arr.sort((a, b) => moment(a.date).day() - moment(b.modDate).day())
@@ -58,7 +57,9 @@ const Events = () => {
       new moment(b.name).format("YYYYMMDD")
   );
 
-  sortedArray[0].name = "Today Events";
+  if (moment().format("MMMM DD") === sortedArray[0].name) {
+    sortedArray[0].name = "Today Events";
+  }
 
   const handleEventEdit = (id) => {
     console.log(id);
@@ -89,7 +90,7 @@ const Events = () => {
       {sortedArray.map((item, i) => {
         return (
           <EventsContainer key={i}>
-            <EventMonth>{item.name}</EventMonth>
+            <EventMonth className={item.name}>{item.name}</EventMonth>
             {item.title.map((e) => {
               return (
                 <Event key={e.id}>

@@ -15,7 +15,7 @@ export const EventTitle = styled.h6`
 export const EventsContainer = styled.div`
   margin: 0 0 20px;
   width: 100%;
-  :first-child h3{
+  h3.Today{
     color: #ff9100;
     font-size: 22px;
   }
@@ -24,6 +24,7 @@ export const EventsContainer = styled.div`
 export const EventMonth = styled.h3`
   margin: 0 0 20px;
   color: #777;
+
 `;
 
 export const Event = styled.div`
