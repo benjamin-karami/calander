@@ -5,7 +5,7 @@ export const ModalContainer = styled.div`
   max-width: 350px;
   min-height: 430px;
   overflow-y: scroll;
-  margin: 50px auto 0;
+  margin: 20px auto 0;
   border: 1px solid #333;
   padding: 15px 10px 20px;
   position: absolute;
