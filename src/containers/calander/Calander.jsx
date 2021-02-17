@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { RecentEvent, Event } from "./Calander.styles";
+import {
+  RecentEvent,
+  Event,
+  CalanderSection,
+  CalendarTitle,
+} from "./Calander.styles";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -59,12 +64,13 @@ const Calander = () => {
   };
 
   return (
-    <>
+    <CalanderSection>
+      <CalendarTitle>Pick a day</CalendarTitle>
       <Calendar value={dateState} onClickDay={changeDate} />
       <RecentEvent>
         <Event>{recentDate}</Event>
       </RecentEvent>
-    </>
+    </CalanderSection>
   );
 };
 

@@ -1,17 +1,17 @@
 import React from "react";
-import { Nav, NavLink, NavList } from "./navbar.styles";
-import { Link } from "react-router-dom";
+import { Nav, NavLinkContainer, NavList } from "./navbar.styles";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <Nav>
       <NavList>
-        <NavLink>
-          <Link to="/">Calander</Link>
-        </NavLink>
-        <NavLink>
-          <Link to="/events">Events</Link>
-        </NavLink>
+        <NavLinkContainer >
+          <NavLink activeClassName='active-Link' exact to="/">Calander</NavLink>
+        </NavLinkContainer>
+        <NavLinkContainer>
+          <NavLink activeClassName='active-Link' exact to="/events">Events</NavLink>
+        </NavLinkContainer>
       </NavList>
     </Nav>
   );
